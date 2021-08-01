@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<!-- <script src="https://d3js.org/d3.v3.js"></script> -->
+<script src="https://d3js.org/d3.v5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<!-- Create a div where the graph will take place -->
+<title>ChartJS</title>
+<div><h1>Data Visualization : Assignment#1 ChartJS by Hemant Hatankar Roll No.49</h1></div>
+<div><h4>Show the performance of each farmer with respect to daily / monthly milk sale.</h4></div>
+<div id="wrapper" style="border: thin solid black">
+<canvas id="chart"></canvas>
+</div>
+
+<div><h4>Show the incline or decline in avg FAT/avg SNF for each farmer on monthly basis for Cow milk seperately.</h4></div>
+<div id="wrapper1" style="border: thin solid black">
+<canvas id="chart1"></canvas>
+
+<div><h4>Show the incline or decline in avg FAT/avg SNF for each farmer on monthly basis for Buffalo milk seperately.</h4></div>
+<div id="wrapper11" style="border: thin solid black">
+<canvas id="chart11"></canvas>
+
+<div><h4>Show the performance of each collection centre (cct_dcc_id) with respect to monthly milk sale.</h4></div>
+<div id="wrapper2" style="border: thin solid black">
+<canvas id="chart2"></canvas>
+</div>
+
+<div><h4>Show the contribution of milk by each centre for cow milk.</h4></div>
+<div id="wrapper3" style="border: thin solid black">
+<canvas id="chart3"></canvas>
+</div>
+
+<div><h4>Show the contribution of milk by each centre for buffalo milk.</h4></div>
+<div id="wrapper4" style="border: thin solid black">
+<canvas id="chart4"></canvas>
+
+</div>
+<style>
+#wrapper {
+  height: 500px;
+}
+#wrapper1 {
+  height: 500px;
+}
+#wrapper11 {
+  height: 500px;
+}
+#wrapper2 {
+  height: 500px;
+}
+#wrapper3 {
+  height: 500px;
+}
+#wrapper4 {
+  height: 500px;
+}
+</style>
+
+<script>
+function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+function makeChart(players) {
+  // players is an array of objects where each object is something like:
+  // {
+  //   "Name": "Steffi Graf",
+  //   "Weeks": "377",
+  //   "Gender": "Female"
+  // }
+
+  var Date = players.map(function(d) {
+    return d.Date;
+  });
+  var cct_customer_id_127 = players.map(function(d) {
+    return +d.cct_customer_id_127;
+  });
+  var cct_customer_id_105 = players.map(function(d) {
+    return +d.cct_customer_id_105;
+  });
+
+  var cct_customer_id_106 = players.map(function(d) {
+    return +d.cct_customer_id_106;
+  });
+
+  var cct_customer_id_108 = players.map(function(d) {
+    return +d.cct_customer_id_108;
+  });
+
+  var cct_customer_id_109 = players.map(function(d) {
+    return +d.cct_customer_id_109;
+  });
+
+
+  var chart = new Chart('chart', {
+    type: "line",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: true
+      }
+    },
+    data: {
+      labels: Date,
+      datasets: [
+        {
+		  label: "cct_customer_id_127",
+          data: cct_customer_id_127,
+		  borderColor: "red",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_105",
+          data: cct_customer_id_105,
+		  borderColor: "green",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_106",
+          data: cct_customer_id_106,
+		  borderColor: "blue",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_108",
+          data: cct_customer_id_108,
+		  borderColor: "orange",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_109",
+          data: cct_customer_id_109,
+		  borderColor: "black",
+          fill: false
+        }
+      ]
+    }
+  });
+}
+
+// Request data using D3
+d3.csv("DailyMilkPerformance1.csv")
+  .then(makeChart);
+
+function makeChart1(players) {
+  // players is an array of objects where each object is something like:
+  // {
+  //   "Name": "Steffi Graf",
+  //   "Weeks": "377",
+  //   "Gender": "Female"
+  // }
+
+  var Date = players.map(function(d) {
+    return d.month_year;
+  });
+  var cct_customer_id_107 = players.map(function(d) {
+    return +d.cct_customer_id_107;
+  });
+  var cct_customer_id_110 = players.map(function(d) {
+    return +d.cct_customer_id_110;
+  });
+
+  var cct_customer_id_112 = players.map(function(d) {
+    return +d.cct_customer_id_112;
+  });
+
+  var cct_customer_id_108 = players.map(function(d) {
+    return +d.cct_customer_id_108;
+  });
+
+  var cct_customer_id_109 = players.map(function(d) {
+    return +d.cct_customer_id_109;
+  });
+
+  var chart = new Chart('chart1', {
+    type: "line",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: true
+      }
+    },
+    data: {
+      labels: Date,
+      datasets: [
+        {
+		  label: "cct_customer_id_107",
+          data: cct_customer_id_107,
+		  borderColor: "red",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_110",
+          data: cct_customer_id_110,
+		  borderColor: "green",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_112",
+          data: cct_customer_id_112,
+		  borderColor: "blue",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_108",
+          data: cct_customer_id_108,
+		  borderColor: "orange",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_109",
+          data: cct_customer_id_109,
+		  borderColor: "black",
+          fill: false
+        }
+      ]
+    }
+  });
+}
+
+// Request data using D3
+d3.csv("DailyMilkFatPerformance1.csv")
+  .then(makeChart1);
+
+
+function makeChart11(players) {
+  // players is an array of objects where each object is something like:
+  // {
+  //   "Name": "Steffi Graf",
+  //   "Weeks": "377",
+  //   "Gender": "Female"
+  // }
+
+  var Date = players.map(function(d) {
+    return d.month_year;
+  });
+  var cct_customer_id_107 = players.map(function(d) {
+    return +d.cct_customer_id_107;
+  });
+  var cct_customer_id_105 = players.map(function(d) {
+    return +d.cct_customer_id_105;
+  });
+
+  var cct_customer_id_106 = players.map(function(d) {
+    return +d.cct_customer_id_106;
+  });
+
+  var cct_customer_id_108 = players.map(function(d) {
+    return +d.cct_customer_id_108;
+  });
+
+  var cct_customer_id_113 = players.map(function(d) {
+    return +d.cct_customer_id_113;
+  });
+
+  var chart = new Chart('chart11', {
+    type: "line",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: true
+      }
+    },
+    data: {
+      labels: Date,
+      datasets: [
+        {
+		  label: "cct_customer_id_107",
+          data: cct_customer_id_107,
+		  borderColor: "red",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_105",
+          data: cct_customer_id_105,
+		  borderColor: "green",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_106",
+          data: cct_customer_id_106,
+		  borderColor: "blue",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_108",
+          data: cct_customer_id_108,
+		  borderColor: "orange",
+          fill: false
+        },
+		{
+		  label: "cct_customer_id_113",
+          data: cct_customer_id_113,
+		  borderColor: "black",
+          fill: false
+        }
+      ]
+    }
+  });
+}
+
+// Request data using D3
+d3.csv("DailyMilkBFatPerformance1.csv")
+  .then(makeChart11);  
+  
+
+function makeChart2(players) {
+  // players is an array of objects where each object is something like:
+  // {
+  //   "Name": "Steffi Graf",
+  //   "Weeks": "377",
+  //   "Gender": "Female"
+  // }
+
+  var Date = players.map(function(d) {
+    return d.month_year;
+  });
+  var cct_dcc_id_1 = players.map(function(d) {
+    return +d.cct_dcc_id_35;
+  });
+  var cct_dcc_id_2 = players.map(function(d) {
+    return +d.cct_dcc_id_33;
+  });
+
+  var cct_dcc_id_3 = players.map(function(d) {
+    return +d.cct_dcc_id_34;
+  });
+
+  var cct_dcc_id_4 = players.map(function(d) {
+    return +d.cct_dcc_id_37;
+  });
+
+  var cct_dcc_id_5 = players.map(function(d) {
+    return +d.cct_dcc_id_36;
+  });
+
+
+  var chart = new Chart('chart2', {
+    type: "line",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: true
+      }
+    },
+    data: {
+      labels: Date,
+      datasets: [
+        {
+		  label: "cct_dcc_id_35",
+          data: cct_dcc_id_1,
+		  borderColor: "red",
+          fill: false
+        },
+		{
+		  label: "cct_dcc_id_33",
+          data: cct_dcc_id_2,
+		  borderColor: "green",
+          fill: false
+        },
+		{
+		  label: "cct_dcc_id_34",
+          data: cct_dcc_id_3,
+		  borderColor: "blue",
+          fill: false
+        },
+		{
+		  label: "cct_dcc_id_37",
+          data: cct_dcc_id_4,
+		  borderColor: "orange",
+          fill: false
+        },
+		{
+		  label: "cct_dcc_id_36",
+          data: cct_dcc_id_5,
+		  borderColor: "black",
+          fill: false
+        }
+      ]
+    }
+  });
+}
+
+// Request data using D3
+d3.csv("MonthlyMilkPerformance1.csv")
+  .then(makeChart2);
+
+  
+  
+function makeChart4(players) {
+  // players is an array of objects where each object is something like:
+  // {
+  //   "Name": "Steffi Graf",
+  //   "Weeks": "377",
+  //   "Gender": "Female"
+  // }
+
+  var cct_dcc_id = players.map(function(d) {
+    return d.cct_dcc_id;
+  });
+  var cct_ltr = players.map(function(d) {
+    return +d.cct_ltr;
+  });
+
+  var chart = new Chart('chart3', {
+    type: "pie",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: true
+      }
+    },
+    data: {
+      labels: cct_dcc_id,
+      datasets: [
+        {
+		  label: 'contribution of milk by each centre for cow milk',
+          data: cct_ltr,
+		  backgroundColor: getRandomColor(),
+    hoverOffset: 4
+        }
+      ]
+    }
+  });
+  
+  const colorScale = d3.interpolateInferno;
+
+const colorRangeInfo = {
+  colorStart: 0,
+  colorEnd: 1,
+  useEndAsStart: false,
+}; 
+}
+
+// Request data using D3
+d3.csv("CetreContributionCMilk.csv")
+  .then(makeChart4);
+  
+ function makeChart5(players) {
+  // players is an array of objects where each object is something like:
+  // {
+  //   "Name": "Steffi Graf",
+  //   "Weeks": "377",
+  //   "Gender": "Female"
+  // }
+
+  var cct_dcc_id = players.map(function(d) {
+    return d.cct_dcc_id;
+  });
+  var cct_ltr = players.map(function(d) {
+    return +d.cct_ltr;
+  });
+
+  var chart = new Chart('chart4', {
+    type: "pie",
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: true
+      }
+    },
+    data: {
+      labels: cct_dcc_id,
+      datasets: [
+        {
+		  label: 'contribution of milk by each centre for cow milk',
+          data: cct_ltr,
+		  backgroundColor: getRandomColor(),
+    hoverOffset: 4
+        }
+      ]
+    }
+  });
+  
+  const colorScale = d3.interpolateInferno;
+
+const colorRangeInfo = {
+  colorStart: 0,
+  colorEnd: 1,
+  useEndAsStart: false,
+}; 
+}
+
+// Request data using D3
+d3.csv("CetreContributionBMilk.csv")
+  .then(makeChart5);
+</script>
